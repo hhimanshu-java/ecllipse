@@ -1,0 +1,60 @@
+package com.self;
+import java.io.File;
+import java.io.FileInputStream;
+import java.time.Duration;
+import java.util.Properties;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+public class Doubt {
+	public static void main(String[] args) throws Throwable{
+		FileInputStream fis = new FileInputStream("./Test Data/A35properties.xlsx");
+		Workbook workbook = WorkbookFactory.create(fis);
+		FileInputStream file = new FileInputStream("./Test Data/url.properties");
+		Properties prop = new Properties();
+		prop.load(file);
+		String url = prop.getProperty("url");
+		System.out.println(url);
+		String FN = workbook.getSheet("Sheet1").getRow(1).getCell(0).getStringCellValue();
+		String LN = workbook.getSheet("Sheet1").getRow(1).getCell(1).getStringCellValue();
+		String mail = workbook.getSheet("Sheet1").getRow(1).getCell(2).getStringCellValue();
+		String password = workbook.getSheet("Sheet1").getRow(1).getCell(3).getStringCellValue();
+		String cnfrmpswrd = workbook.getSheet("Sheet1").getRow(1).getCell(4).getStringCellValue();
+		System.out.println(FN +" " + LN + " " + mail + " " + password + " " + cnfrmpswrd);
+		WebDriver d = new ChromeDriver();
+		d.manage().window().maximize();
+		d.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		d.get(url);
+		d.findElement(By.id("gender-male")).click();
+		d.findElement(By.id("FirstName")).sendKeys(FN);
+		d.findElement(By.id("LastName")).sendKeys(LN);
+		d.findElement(By.id("Email")).sendKeys(mail);
+		d.findElement(By.id("Password")).sendKeys(password);
+		d.findElement(By.id("ConfirmPassword")).sendKeys(cnfrmpswrd);
+		d.findElement(By.id("register-button")).click();
+//		Thread.sleep(3000);
+		WebElement result = d.findElement(By.xpath("//div[@class='result']"));
+		File temp = result.getScreenshotAs(OutputType.FILE);
+		File dest = new File("./Screenshot/Result.png");
+		FileHandler.copy(temp, dest);
+		WebDriverWait w = new WebDriverWait(d, Duration.ofSeconds(2));
+		Boolean registerpage = w.until(ExpectedConditions.urlContains("registerresult/1"));
+		System.out.println("IS USER ABLE TO REGISTER :- " + registerpage);
+//		Thread.sleep(2000);
+		d.findElement(By.xpath("(//input[@type='button'])[2]")).click();
+		WebElement Mail = d.findElement(By.xpath("(//a[@class='account'])[1]"));
+		File temp1 = Mail.getScreenshotAs(OutputType.FILE);
+		File dest1 = new File("./Screenshot/mailid.png");
+		FileHandler.copy(temp1, dest1);
+		fis.close();
+		file.close();
+	}
+
+}

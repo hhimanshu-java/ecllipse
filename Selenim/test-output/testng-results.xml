@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="1" total="4" passed="3" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[KAWASAKI got executed]]>
+    </line>
+    <line>
+      <![CDATA[BAJAJ got executed]]>
+    </line>
+    <line>
+      <![CDATA[Hero got executed]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2025-01-06T11:33:31 IST" name="Suite" finished-at="2025-01-06T11:33:55 IST" duration-ms="24129">
+    <groups>
+      <group name="regression">
+        <method signature="Kawasaki.link()[pri:0, instance:com.BikeBE.Kawasaki@563f38c4]" name="link" class="com.BikeBE.Kawasaki"/>
+      </group> <!-- regression -->
+      <group name="smoke">
+        <method signature="Bajaj.link()[pri:0, instance:com.BikeBE.Bajaj@11392934]" name="link" class="com.BikeBE.Bajaj"/>
+        <method signature="Hero.link()[pri:0, instance:com.BikeBE.Hero@543295b0]" name="link" class="com.BikeBE.Hero"/>
+      </group> <!-- smoke -->
+    </groups>
+    <test started-at="2025-01-06T11:33:31 IST" name="Test" finished-at="2025-01-06T11:33:55 IST" duration-ms="24129">
+      <class name="com.BikeBE.Hero">
+        <test-method signature="link()[pri:0, instance:com.BikeBE.Hero@543295b0]" started-at="2025-01-06T11:33:31 IST" name="link" finished-at="2025-01-06T11:33:55 IST" duration-ms="24102" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Hero got executed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- link -->
+      </class> <!-- com.BikeBE.Hero -->
+      <class name="com.BikeBE.Kawasaki">
+        <test-method signature="link()[pri:0, instance:com.BikeBE.Kawasaki@563f38c4]" started-at="2025-01-06T11:33:31 IST" name="link" finished-at="2025-01-06T11:33:37 IST" duration-ms="5732" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[KAWASAKI got executed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- link -->
+      </class> <!-- com.BikeBE.Kawasaki -->
+      <class name="com.BikeBE.Bajaj">
+        <test-method signature="link()[pri:0, instance:com.BikeBE.Bajaj@11392934]" started-at="2025-01-06T11:33:31 IST" name="link" finished-at="2025-01-06T11:33:43 IST" duration-ms="12647" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[BAJAJ got executed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- link -->
+      </class> <!-- com.BikeBE.Bajaj -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
